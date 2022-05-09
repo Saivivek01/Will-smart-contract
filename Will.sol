@@ -9,7 +9,7 @@ contract Inheritance{
     constructor() public payable {
         owner = msg.sender;
         property = msg.value;
-        alive = false;
+        alive = true;
     }
 
     modifier realOwner {
@@ -18,7 +18,7 @@ contract Inheritance{
     }
 
     modifier isAlive {
-        require(alive = true);
+        require(alive == false);
         _;
     }
 
@@ -38,7 +38,7 @@ contract Inheritance{
     }
 
     function died() public realOwner {
-        alive = true;
+        alive = false;
         propertyTransfer();
     }
 }
